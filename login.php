@@ -2,6 +2,7 @@
 
 require "vendor/autoload.php";
 require "connection.php";
+session_start();
 
 $app = new \atk4\ui\App("Sirup4ik");
 $app->initLayout("Centered");
@@ -17,8 +18,9 @@ $form->onSubmit(function($form)use($model){
   $model->tryLoadBy("nickname",$form->model["nickname"]);
   if (isset($model->id)) {
     if ($model["password"] == $form->model["password"]) {
-
-    } else {
+      $_SESSION["user_id"] = $model->id;
+      return new \atk4\ui\jsExpression('document.location = "main.php"');
+  } else {
       return new \atk4\ui\jsNotify(["content" => "Wrong inpunt","color" => "red"]);
     }
   } else {
