@@ -61,7 +61,3 @@ function Save() {
 
 $exit = $app->add(["Button","Exit","red"]);
 $exit->link(["exit"]);
-
-$x2 = $col_3->add(["Button","click x2","inverted mediun yellow"]);
-
-$pus = $col_3->add(["Button","+0.5 cli/sek","inverted mediun purple"]);
